@@ -1,5 +1,8 @@
 export let cart =  JSON.parse(localStorage.getItem('cart')) || []
-console.log(cart)
+
+function saveToStorage(){
+  localStorage.setItem('cart', JSON.stringify(cart))
+}
 
 export function addToCart(productId){
     let matchingItem
@@ -16,8 +19,7 @@ export function addToCart(productId){
         quantity: 1
       })
     }
-    console.log(cart)
-    localStorage.setItem('cart', JSON.stringify(cart))
+    saveToStorage()
   }
 
 export function removeFromCart(productId){
@@ -29,5 +31,5 @@ export function removeFromCart(productId){
     }
   })
   cart = newCart
-  localStorage.setItem('cart', JSON.stringify(cart))
+  saveToStorage()
 }
