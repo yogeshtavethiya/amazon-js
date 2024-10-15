@@ -33,3 +33,17 @@ export function removeFromCart(productId){
   cart = newCart
   saveToStorage()
 }
+
+export function updateCheckoutHeader(){
+    let checkoutItems = document.querySelector('.js-total-cart-items-header')
+    checkoutItems.innerHTML = cart.length + ' items'
+}
+
+export function calculateCartQuantity(){
+  let cartQuantity = 0
+  console.log(cartQuantity)
+  cart.forEach((cartItem)=>{
+    cartQuantity += cartItem.quantity
+  })
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+}
